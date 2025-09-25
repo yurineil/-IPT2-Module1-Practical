@@ -1,53 +1,44 @@
-  if (addStudentBtn && studentForm && studentTable) {
-        addStudentBtn.addEventListener("click", function() {
-            const idNumber = document.getElementById("idNumber").value.trim();
-            const firstName = document.getElementById("firstName").value.trim();
-            const middleName = document.getElementById("middleName").value.trim();
-            const lastName = document.getElementById("lastName").value.trim();
+// Add Student function
+function addStudent(e) {
+  e.preventDefault();
 
-            if (!idNumber || !firstName || !lastName) {
-                alert("Please fill in all required fields (ID, Firstname, Lastname).");
-                return;
-            }
+  const id = document.getElementById('student-id').value;
+  const name = document.getElementById('student-name').value;
 
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
-                <td>${idNumber}</td>
-                <td>${firstName}</td>
-                <td>${middleName}</td>
-                <td>${lastName}</td>
-            `;
-            studentTable.appendChild(newRow);
+  if (!id || !name) {
+    alert("Please fill in both Student ID and Name");
+    return;
+  }
 
-            studentForm.reset();
-        });
-    }
+  const tbody = document.getElementById('student-table-body');
+  const row = `<tr><td>${id}</td><td>${name}</td></tr>`;
+  tbody.innerHTML += row;
 
+  document.getElementById('student-form').reset();
+}
 
-// ================== Developer 2: Add Subject ==================
-    const addSubjectBtn = document.getElementById("addSubject");
-    const subjectForm = document.getElementById("subjectForm");
-    const subjectTable = document.getElementById("table-content"); // same ID in subject.html
+// Attach event listener
+document.getElementById('student-form')
+  ?.addEventListener('submit', addStudent);
+// Add Subject function
+function addSubject(e) {
+  e.preventDefault();
 
-    if (addSubjectBtn && subjectForm && subjectTable) {
-        addSubjectBtn.addEventListener("click", function () {
-            const subjectCode = document.getElementById("subjectCode").value.trim();
-            const subjectName = document.getElementById("subjectName").value.trim();
-            const units = document.getElementById("units").value.trim();
+  const code = document.getElementById('subject-code').value;
+  const name = document.getElementById('subject-name').value;
 
-            if (!subjectCode || !subjectName || !units) {
-                alert("Please fill out all fields.");
-                return;
-            }
+  if (!code || !name) {
+    alert("Please fill in both Subject Code and Name");
+    return;
+  }
 
-            const newRow = document.createElement("tr");
-            newRow.innerHTML = `
-                <td>${subjectCode}</td>
-                <td>${subjectName}</td>
-                <td>${units}</td>
-            `;
-            subjectTable.appendChild(newRow);
+  const tbody = document.getElementById('subject-table-body');
+  const row = `<tr><td>${code}</td><td>${name}</td></tr>`;
+  tbody.innerHTML += row;
 
-            subjectForm.reset();
-        });
-    }
+  document.getElementById('subject-form').reset();
+}
+
+// Attach event listener
+document.getElementById('subject-form')
+  ?.addEventListener('submit', addSubject);
