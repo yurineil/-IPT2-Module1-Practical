@@ -1,21 +1,21 @@
-// Add Student function
-function addStudent(e) {
+// Add Subject function
+function addSubject(e) {
   e.preventDefault();
-  const id = document.getElementById('student-id').value;
-  const name = document.getElementById('student-name').value;
+  const code = document.getElementById('subject-code').value;
+  const name = document.getElementById('subject-name').value;
 
-  if (!id || !name) {
-    alert("Please fill in both Student ID and Name");
+  if (!code || !name) {
+    alert("Please fill in both Subject Code and Name");
     return;
   }
 
-  const tbody = document.getElementById('student-table-body');
-  const row = <tr><td>${id}</td><td>${name}</td></tr>;
+  const tbody = document.getElementById('subject-table-body');
+  const row = <tr><td>${code}</td><td>${name}</td></tr>;
   tbody.innerHTML += row;
 
-  document.getElementById('student-form').reset();
+  document.getElementById('subject-form').reset();
 }
 
 // Attach event listener
-document.getElementById('student-form')
-  ?.addEventListener('submit', addStudent);
+document.getElementById('subject-form')
+  ?.addEventListener('submit', addSubject);
